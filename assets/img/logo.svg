@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="g" x1="20" y1="10" x2="236" y2="246" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2ee6a8"/>
+      <stop offset=".48" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="40" y1="20" x2="140" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="90" y1="80" x2="180" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eafff7"/>
+      <stop offset="1" stop-color="#7cf6cf"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="244" height="244" rx="66" fill="url(#g)"/>
+  <rect x="6" y="6" width="244" height="244" rx="66" fill="url(#shine)" opacity=".28"/>
+  <path d="M66 82c0-11 9-20 20-20h84c11 0 20 9 20 20v66c0 11-9 20-20 20h-52l-30 26c-3 2-7 0-7-4v-22h-5c-11 0-20-9-20-20V82z" fill="#04120d" opacity=".9"/>
+  <path d="M92 132l22-30c3-4 9-4 12 0l14 19 12-16c3-4 9-4 12 0l16 22" fill="none" stroke="url(#spark)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M176 62l4.2 10.8L191 77l-10.8 4.2L176 92l-4.2-10.8L161 77l10.8-4.2L176 62z" fill="#eafff7"/>
+  <circle cx="127" cy="146" r="6" fill="#2ee6a8"/>
+</svg>

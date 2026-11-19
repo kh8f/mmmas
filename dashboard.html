@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>لوحة التحكم — MASOUB AI</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#05080e">
+<link rel="icon" href="assets/img/icon.png">
+<link rel="preload" href="assets/fonts/ipa-400-ar.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ipa-700-ar.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="dash-body">
+
+<!-- ============================================================== GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <img src="assets/img/logo.svg" alt="">
+    <h1>لوحة تحكم الموقع</h1>
+    <p>مساحة خاصة لإدارة الموقع والمبيعات.</p>
+
+    <form id="gateForm" autocomplete="off">
+      <input class="pin" id="pin" type="password" inputmode="numeric" maxlength="6"
+             placeholder="••••••" aria-label="الرمز السري" autocomplete="one-time-code" required>
+      <button class="btn block" id="gateBtn" type="submit">دخول</button>
+    </form>
+
+    <div class="gate-msg" id="gateMsg" role="status"></div>
+    <div class="gate-lock" id="gateLock"></div>
+
+    <div class="gate-foot">
+      الدخول محمي بحد للمحاولات.<br>
+      <a href="index.html" style="color:var(--mint);font-weight:700">← العودة للموقع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================= DASHBOARD -->
+<div id="dash" style="display:none">
+  <div class="dash-nav">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="">
+      <span><b>MASOUB AI</b><small style="font-size:.58rem;letter-spacing:.18em;color:var(--dimmer)">ADMIN</small></span>
+    </a>
+    <span style="font-size:.74rem;color:var(--dimmer)">لوحة تحكم الموقع</span>
+    <span class="spacer"></span>
+    <a class="btn sm ghost" href="index.html" target="_blank" rel="noopener">عرض الموقع</a>
+    <button class="btn sm ghost" id="logout">خروج</button>
+  </div>
+
+  <div class="dash-wrap">
+    <div class="dash-head">
+      <div>
+        <h1>نظرة عامة</h1>
+        <p id="todayLine">—</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn sm ghost" id="refresh">تحديث البيانات</button>
+        <button class="btn sm" id="btnCopyScript">نسخ رسالة عرض</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><b id="kVisits">0</b><span>زيارة للموقع</span><small id="kVisitsToday">— اليوم</small></div>
+      <div class="kpi"><b id="kWa">0</b><span>نقرة واتساب</span><small id="kWaToday">— اليوم</small></div>
+      <div class="kpi"><b id="kDl">0</b><span>تحميل المثبّت</span><small id="kDlToday">— اليوم</small></div>
+      <div class="kpi"><b id="kEvents">0</b><span>إجمالي الأحداث</span><small>محفوظة في هذا المتصفح</small></div>
+    </div>
+
+    <div class="two">
+      <div class="panel">
+        <h2>الزيارات — آخر 7 أيام</h2>
+        <p class="sub">تُحسب من هذا المتصفح فقط (لا يوجد سيرفر).</p>
+        <div class="chart" id="chart"></div>
+      </div>
+
+      <div class="panel">
+        <h2>أدوات سريعة</h2>
+        <p class="sub">تفتح واتساب برسالة جاهزة أو تنسخها.</p>
+        <div class="actions-grid">
+          <button class="act" data-copy="general">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+            نسخ رسالة استفسار
+          </button>
+          <button class="act" data-copy="m3">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+            نسخ رسالة باقة 3 أشهر
+          </button>
+          <button class="act" data-wa-admin>
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.5 9 9 0 0 1-4-1L3 21l1.5-4.5A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+            فتح واتساب
+          </button>
+          <button class="act" id="btnDownload">
+            <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg>
+            تحميل المثبّت
+          </button>
+          <button class="act" id="btnClear">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 14h10l1-14"/></svg>
+            تصفير الإحصائيات
+          </button>
+          <button class="act" id="btnHome">
+            <svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v11h14V10"/></svg>
+            الصفحة الرئيسية
+          </button>
+        </div>
+        <p class="mono" style="margin-top:14px">رقم المتجر · <span data-phone>0578166461</span> · واتساب <span data-whatsapp dir="ltr">966578166461</span></p>
+      </div>
+    </div>
+
+    <div class="panel" id="settingsPanel">
+      <h2>إعدادات الموقع</h2>
+      <p class="sub">عدّل الأسعار ورقم التواصل ورابط التحميل. تُطبّق فوراً في هذا المتصفح، وزر «تنزيل site-config.js» يجعلها ثابتة لكل الزوار.</p>
+
+      <div class="set-grid">
+        <label class="field">
+          <span>سعر شهر واحد (ريال)</span>
+          <input id="cfg-m1" type="number" min="0" step="1" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>سعر 3 أشهر (ريال)</span>
+          <input id="cfg-m3" type="number" min="0" step="1" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>سعر 6 أشهر (ريال)</span>
+          <input id="cfg-m6" type="number" min="0" step="1" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>سعر سنة كاملة (ريال)</span>
+          <input id="cfg-y1" type="number" min="0" step="1" inputmode="numeric">
+        </label>
+      </div>
+
+      <div class="set-grid">
+        <label class="field">
+          <span>مدة التجربة المجانية (أيام)</span>
+          <input id="cfg-trial" type="number" min="1" max="60" step="1" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>رقم التواصل الظاهر</span>
+          <input id="cfg-phone" type="tel" dir="ltr" style="text-align:left">
+        </label>
+        <label class="field">
+          <span>رقم واتساب (دولي بدون +)</span>
+          <input id="cfg-wa" type="tel" dir="ltr" style="text-align:left">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>رابط ملف التحميل (زر «تحميل المثبّت»)</span>
+        <input id="cfg-dl" type="text" dir="ltr" style="text-align:left" placeholder="downloads/MASOUB-AI-Setup-1.0.0.exe">
+      </label>
+
+      <div class="set-actions">
+        <button class="btn" id="btnSaveCfg">حفظ الإعدادات</button>
+        <button class="btn ghost" id="btnResetCfg">استعادة الافتراضي</button>
+        <button class="btn ghost" id="btnCopyCfg">نسخ site-config.js</button>
+        <button class="btn ghost" id="btnDownloadCfg">تنزيل site-config.js</button>
+      </div>
+
+      <p class="mono" id="cfgPreview" style="margin-top:12px"></p>
+    </div>
+
+    <div class="panel">
+      <h2>آخر الأحداث</h2>
+      <p class="sub">أحدث 60 حدثاً — الزيارات، نقرات واتساب، التحميل، ومشاهدات المعرض.</p>
+      <div class="logs">
+        <table>
+          <thead><tr><th>الوقت</th><th>الحدث</th><th>الصفحة</th><th>التفاصيل</th></tr></thead>
+          <tbody id="logsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>فاحص أكواد الترخيص</h2>
+      <p class="sub">تحقّق من أي كود MSA1 محلياً في متصفحك — نفس التحقق الموجود داخل البرنامج.</p>
+
+      <label class="field">
+        <span>كود الترخيص</span>
+        <textarea id="licCode" placeholder="MSA1-XXXXXXXX-..." spellcheck="false"></textarea>
+      </label>
+
+      <div class="two" style="gap:12px">
+        <label class="field">
+          <span>رمز جهاز العميل (اختياري — إذا كان الكود مربوطاً)</span>
+          <input id="devCode" type="text" maxlength="8" placeholder="ABCD2345" dir="ltr" style="text-align:left">
+        </label>
+        <div style="display:flex;align-items:flex-end;gap:10px;padding-bottom:12px">
+          <button class="btn" id="btnVerify">فحص الكود</button>
+          <button class="btn ghost" id="btnPaste">لصق</button>
+        </div>
+      </div>
+
+      <div class="lic-result" id="licResult"></div>
+    </div>
+
+    <div class="panel">
+      <h2>ملاحظة</h2>
+      <p class="sub" style="margin:0">
+        هذه اللوحة تعمل بالكامل داخل المتصفح ولا تتصل بأي سيرفر. إحصائيات الزيارات محفوظة في
+        <span class="mono">localStorage</span> على هذا الجهاز فقط، وتُمسح عند حذف بيانات المتصفح.
+        عدد المحاولات محدود للحماية من التخمين.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/site-config.js"></script>
+<script src="assets/js/settings.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>
