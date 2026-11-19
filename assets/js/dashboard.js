@@ -17,7 +17,7 @@ const GATE = {
 const RL = { maxFails: 5, windowMs: 15 * 60 * 1000, lockMs: 10 * 60 * 1000 };
 
 const S = window.MSBSettings || {
-  get: () => ({ prices: { m1: 49, m3: 119, m6: 199, y1: 349 }, trialDays: 1, phone: '0578166461', whatsapp: '966578166461', downloadUrl: 'downloads/MASOUB-AI-Setup-1.0.0.exe' }),
+  get: () => ({ prices: { m1: 49, m3: 119, m6: 199, y1: 349 }, trialDays: 1, phone: '0578166461', whatsapp: '966578166461', downloadUrl: 'https://github.com/kh8f/mmmas/releases/download/v1.0.0/MASOUB-AI-Setup-1.0.0.exe' }),
   save() {},
   reset() {},
   apply() {},

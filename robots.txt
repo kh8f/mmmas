@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+
+Sitemap: https://masoub-ai.kahl.workers.dev/sitemap.xml

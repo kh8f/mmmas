@@ -13,7 +13,7 @@
     trialDays: 1,
     phone: '0578166461',
     whatsapp: '966578166461',
-    downloadUrl: 'downloads/MASOUB-AI-Setup-1.0.0.exe',
+    downloadUrl: 'https://github.com/kh8f/mmmas/releases/download/v1.0.0/MASOUB-AI-Setup-1.0.0.exe',
     appVersion: '1.0.0',
     appSize: '108 ميجابايت',
   }, window.MSB_CONFIG || {});

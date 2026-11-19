@@ -17,7 +17,7 @@ window.MSB_CONFIG = {
   trialDays: 1,                                   // مدة التجربة المجانية بالأيام
   phone: '0578166461',                            // الرقم الظاهر في الموقع
   whatsapp: '966578166461',                       // رقم واتساب بصيغة دولية بدون +
-  downloadUrl: 'downloads/MASOUB-AI-Setup-1.0.0.exe',
+  downloadUrl: 'https://github.com/kh8f/mmmas/releases/download/v1.0.0/MASOUB-AI-Setup-1.0.0.exe',
   appVersion: '1.0.0',
   appSize: '108 ميجابايت',
 };
